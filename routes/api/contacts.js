@@ -11,31 +11,9 @@ const {
 const router = express.Router();
 
 router.get("/", getAllContacts);
-router.get("/:contactId", getOneContact);
+router.get("/:id", getOneContact);
 router.post("/", addNewContact);
-router.patch("/:contactId", updateOneContact);
-router.delete("/:contactId", deleteOneContact);
+router.patch("/:id", updateOneContact);
+router.delete("/:id", deleteOneContact);
 
 module.exports = router;
-
-// router.get("/", async (req, res, next) => {
-//   const result = await contacts.listContacts();
-//   res.json(result);
-//   // res.json({ message: "template message" });
-// });
-
-// router.get("/:contactId", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
-
-// router.post("/", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
-
-// router.delete("/:contactId", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
-
-// router.put("/:contactId", async (req, res, next) => {
-//   res.json({ message: "template message" });
-// });
