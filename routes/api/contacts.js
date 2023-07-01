@@ -16,6 +16,8 @@ router.post("/", addNewContact);
 router.patch("/:contactId", updateOneContact);
 router.delete("/:contactId", deleteOneContact);
 
+module.exports = router;
+
 // router.get("/", async (req, res, next) => {
 //   const result = await contacts.listContacts();
 //   res.json(result);
@@ -37,5 +39,3 @@ router.delete("/:contactId", deleteOneContact);
 // router.put("/:contactId", async (req, res, next) => {
 //   res.json({ message: "template message" });
 // });
-
-module.exports = router;
