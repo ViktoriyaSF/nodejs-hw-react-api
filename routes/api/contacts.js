@@ -1,23 +1,20 @@
 const express = require("express");
 
-const contacts = require("../../services/contactsServices");
-
 const {
   getAllContacts,
-    getOneContact
-    addNewContact,
-    updateOneContact,
-    deleteOneContact,
-} = requiere("../../controllers/contactsControllers")
+  getOneContact,
+  addNewContact,
+  updateOneContact,
+  deleteOneContact,
+} = require("../../controllers/contactsControllers");
 
 const router = express.Router();
 
-router.get('/', getAllContacts);
-router.get('/:contactId', getOneContact);
-router.get('/', addNewContact);
-router.get('/:contactId', updateOneContact);
-router.get('/:contactId', deleteOneContact);
-
+router.get("/", getAllContacts);
+router.get("/:contactId", getOneContact);
+router.post("/", addNewContact);
+router.patch("/:contactId", updateOneContact);
+router.delete("/:contactId", deleteOneContact);
 
 // router.get("/", async (req, res, next) => {
 //   const result = await contacts.listContacts();
