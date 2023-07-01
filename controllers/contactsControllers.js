@@ -13,35 +13,29 @@ const getAllContacts = async (req, res) => {
   res.status(200).json(contacts);
 };
 
-const getOneContact = async (req, res, next) => {
-  try {
-    const { contactId } = req.params;
-    const result = await getContactById(contactId);
-    res.status(200).json(result);
-  } catch (error) {
-    next(error);
-  }
+const getOneContact = async (req, res) => {
+  const { id } = req.params;
+  const result = await getContactById(id);
+  res.status(200).json(result);
 };
-
 const addNewContact = async (req, res) => {
   const newContact = await addContact(req.body);
   res.status(201).json(newContact);
 };
 const updateOneContact = async (req, res) => {
-  const { contactId } = req.params;
-  const updatedContact = await updateContact(contactId, req.body);
+  const { id } = req.params;
+  const updatedContact = await updateContact(id, req.body);
   res.status(200).json(updatedContact);
 };
 const deleteOneContact = async (req, res) => {
-  const { contactId } = req.params;
-  const deletedContact = await removeContact(contactId);
-  res.status(200).json({ id: contactId });
+  const { id } = req.params;
+  const deletedContact = await removeContact(id);
+  res.status(200).json(deletedContact);
 };
 
 module.exports = {
   getAllContacts: ctrlWrapper(getAllContacts),
-  getOneContact,
-  // getOneContact: ctrlWrapper(getOneContact),
+  getOneContact: ctrlWrapper(getOneContact),
   addNewContact: ctrlWrapper(addNewContact),
   updateOneContact: ctrlWrapper(updateOneContact),
   deleteOneContact: ctrlWrapper(deleteOneContact),
