@@ -6,4 +6,6 @@ const globalErrorHandler = (err, req, res, next) => {
   res.status(statusCode).json({ message });
 };
 
-module.exports = globalErrorHandler;
+module.exports = {
+  globalErrorHandler,
+};

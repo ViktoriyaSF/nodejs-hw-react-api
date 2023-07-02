@@ -3,7 +3,7 @@ const logger = require("morgan");
 const cors = require("cors");
 
 const contactsRouter = require("./routes/api/contacts");
-const globalErrorHandler = require("./middlewares/globalErrorHandler");
+const { globalErrorHandler } = require("./middlewares/globalErrorHandler");
 
 const app = express();
 
@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/contacts", contactsRouter);
+
 app.use(globalErrorHandler);
 
 // app.use((req, res) => {
