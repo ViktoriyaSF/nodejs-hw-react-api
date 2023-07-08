@@ -9,14 +9,14 @@ const {
 } = require("../../controllers/contactsControllers");
 
 // const { addSchema } = require("../../schemas/schemasContacts");
-const { addSchema, updateFavoriteSchema } = require("../../models/contact.js");
+const { schemas } = require("../../models/contact.js");
 const validateBody = require("../../middlewares/validateBody");
 
 const router = express.Router();
 
 // router.get("/", getAllContacts);
 // router.get("/:contactId", getOneContact);
-router.post("/", validateBody(addSchema), addNewContact);
+router.post("/", validateBody(schemas.addSchema), addNewContact);
 // router.patch("/:contactId", validateBody(addSchema), updateOneContact);
 // router.delete("/:contactId", deleteOneContact);
 

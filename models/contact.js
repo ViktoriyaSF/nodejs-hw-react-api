@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
+const phoneRegexp = /^(\(\d{3}\)) \d{3}-\d{4}$/;
+
 const contactSchema = new Schema(
   {
     name: {
@@ -13,7 +15,7 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
-      match: /^(\(\d{3}\)) \d{3}-\d{4}$/,
+      match: phoneRegexp,
       unique: true,
       required: true,
     },
@@ -30,15 +32,20 @@ const Contact = model("contact", contactSchema);
 const addSchema = Joi.object({
   name: Joi.string().alphanum().min(3).max(30).required(),
   email: Joi.string().email().required(),
-  phone: Joi.string().required(),
+  phone: Joi.string().pattern(phoneRegexp).required(),
+  favorite: Joi.boolean(),
 });
 
 const updateFavoriteSchema = Joi.object({
-  favorite: Joi.string().required(),
+  favorite: Joi.boolean().required(),
 });
+
+const schemas = {
+  addSchema,
+  updateFavoriteSchema,
+};
 
 module.exports = {
   Contact,
-  addSchema,
-  updateFavoriteSchema,
+  schemas,
 };

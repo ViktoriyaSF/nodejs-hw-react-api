@@ -6,7 +6,7 @@
 //   removeContact,
 // } = require("../services/contactsServices");
 
-const Contact = require("../models/contact");
+const { Contact } = require("../models/contact");
 
 const ctrlWrapper = require("../utils/ctrlWrapper");
 
