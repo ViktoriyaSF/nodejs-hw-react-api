@@ -4,8 +4,8 @@ const {
   getAllContacts,
   getOneContact,
   addNewContact,
-  // updateOneContact,
-  // deleteOneContact,
+  updateOneContact,
+  deleteOneContact,
 } = require("../../controllers/contactsControllers");
 
 // const { addSchema } = require("../../schemas/schemasContacts");
@@ -18,7 +18,12 @@ const router = express.Router();
 router.get("/", getAllContacts);
 router.get("/:contactId", isValidId, getOneContact);
 router.post("/", validateBody(schemas.addSchema), addNewContact);
-// router.patch("/:contactId", validateBody(schemas.addSchema), updateOneContact);
-// router.delete("/:contactId", deleteOneContact);
+router.put(
+  "/:contactId",
+  isValidId,
+  validateBody(schemas.addSchema),
+  updateOneContact
+);
+router.delete("/:contactId", isValidId, deleteOneContact);
 
 module.exports = router;
