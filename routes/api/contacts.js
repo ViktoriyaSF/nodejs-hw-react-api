@@ -5,6 +5,7 @@ const {
   getOneContact,
   addNewContact,
   updateOneContact,
+  updateFavorite,
   deleteOneContact,
 } = require("../../controllers/contactsControllers");
 
@@ -23,6 +24,12 @@ router.put(
   isValidId,
   validateBody(schemas.addSchema),
   updateOneContact
+);
+router.patch(
+  "/:contactId/favorite",
+  isValidId,
+  validateBody(schemas.updateFavoriteSchema),
+  updateFavorite
 );
 router.delete("/:contactId", isValidId, deleteOneContact);
 
