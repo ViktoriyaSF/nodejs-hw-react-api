@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Joi = require("joi");
 
 const contactSchema = new Schema(
   {
@@ -12,6 +13,8 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
+      match: /^(\(\d{3}\)) \d{3}-\d{4}$/,
+      unique: true,
       required: true,
     },
     favorite: {
@@ -24,4 +27,18 @@ const contactSchema = new Schema(
 
 const Contact = model("contact", contactSchema);
 
-module.exports = Contact;
+const addSchema = Joi.object({
+  name: Joi.string().alphanum().min(3).max(30).required(),
+  email: Joi.string().email().required(),
+  phone: Joi.string().required(),
+});
+
+const updateFavoriteSchema = Joi.object({
+  favorite: Joi.string().required(),
+});
+
+module.exports = {
+  Contact,
+  addSchema,
+  updateFavoriteSchema,
+};

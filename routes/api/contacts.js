@@ -8,7 +8,8 @@ const {
   // deleteOneContact,
 } = require("../../controllers/contactsControllers");
 
-const { addSchema } = require("../../schemas/schemasContacts");
+// const { addSchema } = require("../../schemas/schemasContacts");
+const { addSchema, updateFavoriteSchema } = require("../../models/contact.js");
 const validateBody = require("../../middlewares/validateBody");
 
 const router = express.Router();
