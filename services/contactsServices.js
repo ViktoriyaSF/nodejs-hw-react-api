@@ -1,3 +1,5 @@
+// at stage 3 of HW, when we switch to databases, it is no longer necessary. we turn back to the base the other way. change in file contactsControllers
+
 const fs = require("fs/promises");
 const path = require("path");
 const { HttpError } = require("../utils/HttpError");
