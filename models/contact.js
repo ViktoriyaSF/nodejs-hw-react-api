@@ -30,8 +30,6 @@ const contactSchema = new Schema(
 
 contactSchema.post("save", handleSchemaValidationErrors);
 
-// schema Joi
-
 const Contact = model("contact", contactSchema);
 
 module.exports = {
