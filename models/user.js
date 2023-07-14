@@ -33,6 +33,7 @@ const userSchema = new Schema(
 );
 
 userSchema.post("save", handleSchemaValidationErrors);
+
 const User = model("user", userSchema);
 
 module.exports = {
