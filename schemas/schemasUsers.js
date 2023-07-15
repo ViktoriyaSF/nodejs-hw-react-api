@@ -5,17 +5,13 @@ const registerSchema = Joi.object({
   name: Joi.string().required(),
   password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegexp).required(),
-  subscription: Joi.string()
-    .valid(...subscriptionList)
-    .required(),
+  subscription: Joi.string().valid(...subscriptionList),
 });
 
 const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegexp).required(),
-  subscription: Joi.string()
-    .valid(...subscriptionList)
-    .required(),
+  subscription: Joi.string().valid(...subscriptionList),
 });
 
 module.exports = {
