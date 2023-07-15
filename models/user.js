@@ -7,6 +7,10 @@ const subscriptionList = ["starter", "pro", "business"];
 
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       minlength: 6,
