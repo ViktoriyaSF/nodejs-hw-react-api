@@ -1,8 +1,10 @@
 const bcrypt = require("bcrypt");
+
+const { ctrlWrapper } = require("../../utils");
 const { User } = require("../../models/user");
 const { HttpError } = require("../../utils");
 
-const register = async (req, res) => {
+let register = async (req, res) => {
   // email similarity check
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -21,5 +23,6 @@ const register = async (req, res) => {
     subscription: newUser.subscription,
   });
 };
+register = ctrlWrapper(register);
 
 module.exports = register;

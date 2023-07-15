@@ -1,9 +1,9 @@
-const { ctrlWrapper } = require("../../utils");
-
 const register = require("./register");
 const login = require("./login");
+const getCurrent = require("./current");
 
 module.exports = {
-  register: ctrlWrapper(register),
-  login: ctrlWrapper(login),
+  register,
+  login,
+  getCurrent,
 };

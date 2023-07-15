@@ -1,12 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+const { ctrlWrapper } = require("../../utils");
 const { User } = require("../../models/user");
 const { HttpError } = require("../../utils");
 
 const { SECRET_KEY } = process.env;
 
-const login = async (req, res) => {
+let login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
@@ -23,5 +24,6 @@ const login = async (req, res) => {
     token,
   });
 };
+login = ctrlWrapper(login);
 
 module.exports = login;
