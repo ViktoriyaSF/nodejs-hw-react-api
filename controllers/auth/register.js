@@ -21,4 +21,5 @@ const register = async (req, res) => {
     subscription: newUser.subscription,
   });
 };
+
 module.exports = register;
