@@ -5,7 +5,19 @@ const getAllContacts = async (req, res) => {
   // pagination
   const { page = 1, limit = 10 } = req.query;
   const skip = (page - 1) * limit;
-  const contacts = await Contact.find({ owner }, null, { skip, limit });
+
+  // favorite
+  let contacts;
+  if (req.query.favorite) {
+    const favorite = req.query.favorite === "true";
+    contacts = await Contact.find({ owner, favorite }, null, {
+      skip,
+      limit,
+    });
+  } else {
+    contacts = await Contact.find({ owner }, null, { skip, limit });
+  }
+
   res.status(200).json(contacts);
 };
 
