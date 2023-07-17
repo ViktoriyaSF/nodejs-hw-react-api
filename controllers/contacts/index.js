@@ -9,9 +9,9 @@ const deleteOneContact = require("./deleteOneContact");
 
 module.exports = {
   getAllContacts: ctrlWrapper(getAllContacts),
-  getOneContact: ctrlWrapper(getOneContact),
-  addNewContact: ctrlWrapper(addNewContact),
-  updateOneContact: ctrlWrapper(updateOneContact),
-  updateFavorite: ctrlWrapper(updateFavorite),
-  deleteOneContact: ctrlWrapper(deleteOneContact),
+  getOneContact,
+  addNewContact,
+  updateOneContact,
+  updateFavorite,
+  deleteOneContact,
 };

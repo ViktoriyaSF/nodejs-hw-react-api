@@ -1,26 +1,38 @@
 const express = require("express");
 
-const schemas = require("../../schemas/schemasUsers");
+const {
+  registerSchema,
+  loginSchema,
+  changeSubscriptionSchema,
+} = require("../../schemas/schemasUsers");
+
 const { validateBody, authenticate } = require("../../middlewares");
-const ctrl = require("../../controllers/auth");
+
+const {
+  register,
+  login,
+  logout,
+  getCurrent,
+  changeSubscription,
+} = require("../../controllers/auth");
 
 const router = express.Router();
 
 // signup
-router.post("/register", validateBody(schemas.registerSchema), ctrl.register);
+router.post("/register", validateBody(registerSchema), register);
 
 // singin
-router.post("/login", validateBody(schemas.loginSchema), ctrl.login);
+router.post("/login", validateBody(loginSchema), login);
 
-router.get("/current", authenticate, ctrl.getCurrent);
+router.get("/current", authenticate, getCurrent);
 
-router.post("/logout", authenticate, ctrl.logout);
+router.post("/logout", authenticate, logout);
 
 router.patch(
   "/",
   authenticate,
-  validateBody(schemas.changeSubscriptionSchema),
-  ctrl.changeSubscription
+  validateBody(changeSubscriptionSchema),
+  changeSubscription
 );
 
 module.exports = router;

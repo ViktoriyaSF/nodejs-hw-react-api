@@ -1,6 +1,7 @@
 const { Contact } = require("../../models/contact");
+const { ctrlWrapper } = require("../../utils");
 
-const getAllContacts = async (req, res) => {
+let getAllContacts = async (req, res) => {
   const { _id: owner } = req.user;
   // pagination
   const { page = 1, limit = 10 } = req.query;
@@ -20,5 +21,6 @@ const getAllContacts = async (req, res) => {
 
   res.status(200).json(contacts);
 };
+getAllContacts = ctrlWrapper(getAllContacts);
 
 module.exports = getAllContacts;
