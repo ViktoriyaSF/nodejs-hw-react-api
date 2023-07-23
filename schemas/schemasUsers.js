@@ -11,6 +11,7 @@ const registerSchema = Joi.object({
 const userEmailSchema = Joi.object().keys({
   email: registerSchema.extract("email"),
 });
+
 const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
   email: Joi.string().pattern(emailRegexp).required(),

@@ -15,12 +15,15 @@ const {
   getCurrent,
   changeSubscription,
   updateAvatar,
+  verifyEmail,
 } = require("../../controllers/auth");
 
 const router = express.Router();
 
 // signup
 router.post("/register", validateBody(registerSchema), register);
+
+router.get("/verify/:verificationToken", verifyEmail);
 
 // singin
 router.post("/login", validateBody(loginSchema), login);
