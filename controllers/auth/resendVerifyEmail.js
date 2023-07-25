@@ -15,13 +15,13 @@ const resendVerifyEmail = ctrlWrapper(async (req, res) => {
   }
   await sendEmail({
     to: email,
-    subject: "Сonfirm your registration",
+    subject: "Сonfirm your registration 📌",
     html: `<a target="_blank" href="${BASE_URL}:${PORT}/api/auth/verify/${user.verificationToken}">Click to confirm your registration</a>`,
   });
 
   res.json({
-    message: "Verify email send success",
+    message: "Verify email send success. Please confirm your registration 📌",
   });
 });
 
-module.expotrs = resendVerifyEmail;
+module.exports = resendVerifyEmail;
